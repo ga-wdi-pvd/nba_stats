@@ -1,0 +1,21 @@
+All columns for all players from the New York Knicks (NYK)
+Answer: SELECT * FROM players WHERE team = 'NYK';
+All columns for all players from the Indiana Packers (IND) who are under 26 years old
+Answer: SELECT * FROM players WHERE team = 'IND' AND age < 26;
+All columns for all players, ordered from least points scored to most points scored
+Answer: SELECT * FROM players ORDER BY points;
+Name and Points per game (points/games), for the players with the top 20 points per game
+Answer: SELECT (points/games) AS points_per_game FROM players ORDER BY points DESC LIMIT 20;
+The average age for all players
+Answer: SELECT AVG(age) AS average_age FROM players;
+The average age for all players on the Oklahoma City Thunder (OKC)
+Answer: SELECT AVG(age) AS average_age FROM players WHERE team = 'OKC';
+The average age for all players who played more than 40 games
+Answer: SELECT AVG(age) AS average_age FROM players WHERE games > 40;
+The team and total points scored from all players on that team (team points), ordered from most team points to least
+Answer: team, SUM(points) AS team_points FROM players GROUP BY team ORDER BY team_points DESC;
+BONUS QUESTIONS:
+Age and the average points per game for that age, ordered from youngest to oldest
+Answer: SELECT age, AVG(points/games) AS avg_points_per_game FROM players GROUP BY age ORDER BY age;
+Team and the the number of players who score above 12 points per game on that team, ordered from most to least
+Answer: SELECT team, COUNT(*) AS players FROM players WHERE (points/games) > 12 GROUP BY team ORDER BY players DESC;
